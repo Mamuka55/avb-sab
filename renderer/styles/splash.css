@@ -1,0 +1,80 @@
+/* ============================================================
+   EPIC AI — Splash Screen 
+   360 × 220 px, небольшой, автоматически закрывается.
+   ============================================================ */
+
+body { display: flex; align-items: center; justify-content: center; height: 100vh; }
+
+.splash {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  padding: 20px 22px 18px;
+  border-radius: 14px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04);
+  overflow: hidden;
+  animation: splash-in var(--t-slow) var(--ease);
+}
+@keyframes splash-in { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+
+.splash__logo {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 15px; font-weight: 800; letter-spacing: .22em;
+}
+.splash__logo b { color: var(--accent); font-weight: 800; }
+
+.splash__status {
+  margin-top: 5px;
+  font-size: 11px; color: var(--text-muted); letter-spacing: .02em;
+  min-height: 15px;
+}
+
+.splash__steps {
+  list-style: none;
+  margin: 12px 0 0;
+  display: flex; flex-direction: column; gap: 4px;
+  flex: 1 1 auto; min-height: 0;
+}
+.splash__steps li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11.5px;
+  color: var(--text-subtle);
+  transition: color var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+  opacity: .55;
+}
+.splash__steps li .mark {
+  width: 13px; flex: none; text-align: center;
+  font-size: 11px; line-height: 1;
+}
+.splash__steps li[data-state="done"] { color: var(--text-muted); opacity: 1; }
+.splash__steps li[data-state="done"] .mark { color: var(--accent); }
+.splash__steps li[data-state="active"] { color: var(--text-primary); opacity: 1; }
+.splash__steps li[data-state="active"] .mark { color: var(--accent-bright); }
+.splash__steps li[data-state="wait"] .mark { color: var(--text-subtle); }
+.splash__steps li[data-state="error"] { color: var(--danger); opacity: 1; }
+.splash__steps li[data-state="error"] .mark { color: var(--danger); }
+
+.splash__steps li .detail {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 9px; color: var(--text-subtle);
+  max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* Прогресс-бар ━━━━━━━━━━━━━━━ */
+.splash__bar {
+  margin-top: 12px;
+  height: 3px; border-radius: 3px;
+  background: rgba(238,249,244,.07);
+  overflow: hidden;
+  flex: none;
+}
+.splash__bar i {
+  display: block; height: 100%; width: 0%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-mid), var(--accent) 55%, var(--accent-bright));
+  box-shadow: 0 0 10px rgba(172,231,46,.55);
+  transition: width var(--t-slow) var(--ease);
+}
+
+.splash.is-done .splash__bar i { width: 100% !important; }
+.splash.is-failed .splash__bar i { background: var(--danger); box-shadow: 0 0 10px rgba(231,76,60,.5); }

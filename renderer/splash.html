@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" data-lowperf="false">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src data:;" />
+<title>Epic AI</title>
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/splash.css" />
+</head>
+<body>
+  <div class="splash glass">
+    <div class="splash__logo">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M5 25 L16 5 L27 25 Z" stroke="#ACE72E" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="16" cy="19.5" r="2.6" fill="#E2FF3F"/>
+      </svg>
+      <span>EPIC <b>AI</b></span>
+    </div>
+
+    <div class="splash__status" id="splash-status">Инициализация приложения</div>
+
+    <ul class="splash__steps" id="splash-steps"></ul>
+
+    <div class="splash__bar"><i id="splash-bar-fill"></i></div>
+  </div>
+
+  <script type="module" src="scripts/splash.js"></script>
+</body>
+</html>
